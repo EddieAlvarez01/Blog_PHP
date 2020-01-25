@@ -1,3 +1,4 @@
+<?php require_once './includes/helpers.php'; ?>
 <!-- SIDEBAR -->
 		 	<aside id="sidebar">
 		 		<div id="login" class="block-aside">
@@ -12,16 +13,46 @@
 		 		</div>
 		 		<div id="register" class="block-aside">
 		 			<h3>Registrate</h3>
+		 			<?php if(isset($_SESSION['complete'])): ?>
+		 			      <div class="success-alert">
+		 			      	<?=  $_SESSION['complete'] ?>
+		 			      </div>
+		 			  <?php elseif(isset($_SESSION['mistakes']['general'])): ?>
+		 			  	<div class="error-alert">
+		 			      	<?=  $_SESSION['mistakes']['general'] ?>
+		 			      </div>
+		 			  <?php endif; ?>
 		 			<form action="register.php" method="post">
 		 				<label for="name">Nombre: </label>
 		 				<input type="text" name="name">
+		 				<?php
+		 				     if(isset($_SESSION['mistakes'])){
+		 				         echo ShowErrors($_SESSION['mistakes'], 'name');
+		 				     } 
+		 				?>
 		 				<label for="lastName">Apellidos: </label>
 		 				<input type="text" name="lastName">
+		 				<?php
+		 				     if(isset($_SESSION['mistakes'])){
+		 				         echo ShowErrors($_SESSION['mistakes'], 'lastName');
+		 				     } 
+		 				?>
 		 				<label for="email">Email: </label>
 		 				<input type="email" name="email">
+		 				<?php
+		 				     if(isset($_SESSION['mistakes'])){
+		 				         echo ShowErrors($_SESSION['mistakes'], 'email');
+		 				     } 
+		 				?>
 		 				<label for="password">Contraseña: </label>
 		 				<input type="password" name="password">
-		 				<input type="submit" value="Registrarse">
+		 				<?php
+		 				     if(isset($_SESSION['mistakes'])){
+		 				         echo ShowErrors($_SESSION['mistakes'], 'password');
+		 				     } 
+		 				?>
+		 				<input type="submit" value="Registrarse" name="submit">
 		 			</form>
+		 			<?php DeleteErrors(); ?>
 		 		</div>
 			</aside>
