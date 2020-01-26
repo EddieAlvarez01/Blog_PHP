@@ -37,5 +37,27 @@
             unset($_SESSION['errorQuery']);
         }
     }
+    
+    function GetCategories($db){
+        $sql = "SELECT * FROM Categoria;";
+        $categories = mysqli_query($db, $sql);
+        if($categories && mysqli_num_rows($categories) > 0){
+            return $categories;
+        }
+        return array();
+    }
+    
+    function GetEntrys($db){
+        $sql = "SELECT e.*, c.nombre 
+                FROM Entrada e
+                INNER JOIN Categoria c ON c.id = e.categoria_id
+                ORDER BY e.fecha DESC
+                LIMIT 4;";
+        $entrys = mysqli_query($db, $sql);
+        if($entrys && mysqli_num_rows($entrys) > 0){
+            return $entrys;
+        }
+        return array();
+    }
 
 ?>

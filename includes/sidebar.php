@@ -1,4 +1,3 @@
-<?php require_once './includes/helpers.php'; ?>
 <!-- SIDEBAR -->
 		 	<aside id="sidebar">
 		 		<div id="login" class="block-aside">
@@ -34,6 +33,7 @@
 		 			</form>
 		 			<?php endif; ?>
 		 		</div>
+		 		<?php if(!isset($_SESSION['user'])): ?>
 		 		<div id="register" class="block-aside">
 		 			<h3>Registrate</h3>
 		 			<?php if(isset($_SESSION['complete'])): ?>
@@ -76,6 +76,9 @@
 		 				?>
 		 				<input type="submit" value="Registrarse" name="submit">
 		 			</form>
-		 			<?php DeleteErrors(); ?>
 		 		</div>
+		 		<?php 
+		 		   endif;
+		 		   DeleteErrors();
+		 		?>
 			</aside>
