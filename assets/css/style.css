@@ -138,6 +138,20 @@ body{
     margin-bottom: 15px;
 }
 
+#login a{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: block;
+    border-radius: 2px;
+    color: white;
+    background: #007ee5;
+    border: 1px solid #156785;
+    cursor: pointer;
+    padding: 7px;
+    width: 130px;
+    text-align: center;
+}
+
 label, input[type="text"], input[type="email"],
 input[type="password"]{
     display: block;

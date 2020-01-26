@@ -6,9 +6,9 @@
         }
         
         /*RECOGER VALORES DEL FORMULARIO*/
-        $name = !empty($_POST['name']) ? mysqli_real_escape_string($db, $_POST['name']) : false;
-        $lastName = !empty($_POST['lastName']) ? mysqli_real_escape_string($db, $_POST['lastName']) : false;
-        $email = !empty($_POST['email']) ? mysqli_real_escape_string($db, $_POST['email']) : false;
+        $name = !empty($_POST['name']) ? mysqli_real_escape_string($db, trim($_POST['name'])) : false;
+        $lastName = !empty($_POST['lastName']) ? mysqli_real_escape_string($db, trim($_POST['lastName'])) : false;
+        $email = !empty($_POST['email']) ? mysqli_real_escape_string($db, trim($_POST['email'])) : false;
         $password = !empty($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
         
         //ARRAY DE ERRORES

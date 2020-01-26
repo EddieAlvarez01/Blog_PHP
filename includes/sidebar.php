@@ -2,14 +2,37 @@
 <!-- SIDEBAR -->
 		 	<aside id="sidebar">
 		 		<div id="login" class="block-aside">
+		 			<?php if(isset($_SESSION['errorQuery'])): ?>
+		 				<div class="error-alert">
+		 					<?= $_SESSION['errorQuery'] ?>
+		 				</div>
+		 			<?php elseif (isset($_SESSION['errorCredential'])): ?>
+		 				<div class="error-alert">
+		 					<?= $_SESSION['errorCredential'] ?>
+		 				</div>
+		 			<?php endif; ?>
+		 			<?php if(isset($_SESSION['user'])): ?>
+		 				<h3>Hola, <?= $_SESSION['user']['name'] ?></h3>
+		 				<a href="createEntry.php">Crear Entrada</a>
+		 				<a href="createEntry.php">Crear categoria</a>
+		 				<a href="createEntry.php">Mis datos</a>
+		 				<a href="logout.php">Cerrar Sesión</a>
+		 			<?php else: ?>
 		 			<h3>Identificate</h3>
 		 			<form action="login.php" method="post">
 		 				<label for="email">Email: </label>
 		 				<input type="email" name="email">
+		 				<?php if(isset($_SESSION['mistakesLogin'])): ?>
+		 				<?= showErrorLogin($_SESSION['mistakesLogin'], 'email') ?>
+		 				<?php endif; ?>
 		 				<label for="password">Contraseña: </label>
 		 				<input type="password" name="password">
+		 				<?php if(isset($_SESSION['mistakesLogin'])): ?>
+		 				<?= showErrorLogin($_SESSION['mistakesLogin'], 'password') ?>
+		 				<?php endif; ?>
 		 				<input type="submit" value="Entrar">
 		 			</form>
+		 			<?php endif; ?>
 		 		</div>
 		 		<div id="register" class="block-aside">
 		 			<h3>Registrate</h3>
