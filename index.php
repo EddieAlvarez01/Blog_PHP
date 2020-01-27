@@ -10,6 +10,7 @@
 		        <article class="entry">
 		    		<a href="view.entry?id=<?= $entry['id'] ?>">
 		    			<h2><?= $entry['titulo'] ?></h2>
+		    			<span class="date"><?= $entry['nombre'] . ' | ' . date('d/m/Y', strtotime($entry['fecha'])) ?></span>
     		    		<p><?= $entry['descripcion'] ?></p>
 		    		</a>
 		    	</article>

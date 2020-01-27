@@ -12,10 +12,10 @@
 		 			<?php endif; ?>
 		 			<?php if(isset($_SESSION['user'])): ?>
 		 				<h3>Hola, <?= $_SESSION['user']['name'] ?></h3>
-		 				<a href="createEntry.php">Crear Entrada</a>
-		 				<a href="createEntry.php">Crear categoria</a>
-		 				<a href="createEntry.php">Mis datos</a>
-		 				<a href="logout.php">Cerrar Sesión</a>
+		 				<a class="btn" href="createEntry.php">Crear Entrada</a>
+		 				<a class="btn" href="create-category.php">Crear categoria</a>
+		 				<a class="btn" href="createEntry.php">Mis datos</a>
+		 				<a class="btn" href="logout.php">Cerrar Sesión</a>
 		 			<?php else: ?>
 		 			<h3>Identificate</h3>
 		 			<form action="login.php" method="post">
@@ -31,9 +31,7 @@
 		 				<?php endif; ?>
 		 				<input type="submit" value="Entrar">
 		 			</form>
-		 			<?php endif; ?>
 		 		</div>
-		 		<?php if(!isset($_SESSION['user'])): ?>
 		 		<div id="register" class="block-aside">
 		 			<h3>Registrate</h3>
 		 			<?php if(isset($_SESSION['complete'])): ?>
@@ -78,7 +76,7 @@
 		 			</form>
 		 		</div>
 		 		<?php 
-		 		   endif;
 		 		   DeleteErrors();
+		 		   endif;
 		 		?>
 			</aside>

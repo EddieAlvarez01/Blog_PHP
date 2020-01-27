@@ -125,3 +125,18 @@ FROM Entrada e
 RIGHT JOIN Categoria c ON c.id = e.categoria_id
 GROUP BY e.categoria_id;
 
+
+DELIMITER $$
+CREATE PROCEDURE sp_crear_categoria(IN _nombre VARCHAR(100))
+BEGIN
+	DECLARE varName INT DEFAULT 0;
+    SELECT COUNT(*) INTO varName
+    FROM Categoria
+    WHERE LOWER(nombre) = LOWER(_nombre);
+    IF varName = 0 THEN
+		INSERT INTO Categoria(nombre)
+        VALUES(_nombre);
+	END IF;
+END$$
+DELIMITER ;
+

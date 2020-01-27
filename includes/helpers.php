@@ -24,6 +24,10 @@
             $_SESSION['complete'] = null;
             unset($_SESSION['complete']);
         }
+        if(isset($_SESSION['success-create-category'])){
+            $_SESSION['success-create-category'] = null;
+            unset($_SESSION['success-create-category']);
+        }
         if(isset($_SESSION['mistakesLogin'])){
             $_SESSION['mistakesLogin'] = null;
             unset($_SESSION['mistakesLogin']);

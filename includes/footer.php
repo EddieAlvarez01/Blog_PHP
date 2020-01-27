@@ -1,5 +1,4 @@
-		    <div class="clearfix"></div>
-	
+		    <div class="clearfix"></div>	
 	</div>
 		
     <!-- PIE DE PAGINA -->
