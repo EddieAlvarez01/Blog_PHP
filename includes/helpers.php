@@ -42,6 +42,12 @@
         }
     }
     
+    function GenericDeleteErrors($errors){
+        if(isset($_SESSION[$errors])){
+            unset($_SESSION[$errors]);
+        }
+    }
+    
     function GetCategories($db){
         $sql = "SELECT * FROM Categoria;";
         $categories = mysqli_query($db, $sql);
@@ -60,6 +66,17 @@
         $entrys = mysqli_query($db, $sql);
         if($entrys && mysqli_num_rows($entrys) > 0){
             return $entrys;
+        }
+        return array();
+    }
+    
+    function GetUser($db, $id){
+        $sql = "SELECT nombre, apellidos, email, password
+                FROM Usuario
+                WHERE id = $id;";
+        $user = mysqli_query($db, $sql);
+        if($user && mysqli_num_rows($user) > 0){
+            return $user;
         }
         return array();
     }
