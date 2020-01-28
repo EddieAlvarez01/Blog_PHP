@@ -12,7 +12,7 @@
 		 			<?php endif; ?>
 		 			<?php if(isset($_SESSION['user'])): ?>
 		 				<h3>Hola, <?= $_SESSION['user']['name'] ?></h3>
-		 				<a class="btn" href="createEntry.php">Crear Entrada</a>
+		 				<a class="btn" href="create-entry.php">Crear Entrada</a>
 		 				<a class="btn" href="create-category.php">Crear categoria</a>
 		 				<a class="btn" href="createEntry.php">Mis datos</a>
 		 				<a class="btn" href="logout.php">Cerrar Sesión</a>
