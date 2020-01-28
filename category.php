@@ -4,7 +4,8 @@
 		    <div id="main">
 		    	<h1>Últimas entradas</h1>
 		    	<?php 
-		    	     $entrys = GetEntrys($db);
+		    	     $entrys = GetEntrysForCategory($db, (int)$_GET['id']);
+		    	     if(!empty($entrys)):
 		    	     while($entry = mysqli_fetch_assoc($entrys)):
 		        ?>
 		        <article class="entry">
@@ -14,10 +15,14 @@
     		    		<p><?= $entry['descripcion'] ?></p>
 		    		</a>
 		    	</article>
-		        <?php endwhile; ?>
-		    	<div id="seeall">
-		    		<a href="entrys.php">Ver todas las entradas</a>
-		    	</div>
+		        <?php 
+		          endwhile; 
+		          else:
+		        ?>
+		        <div class="error-alert">
+		        	No hay entradas en esta categoría
+		        </div>
+		        <?php endif; ?>
 		    </div>
 		
 		<?php require_once 'includes/footer.php'; ?>

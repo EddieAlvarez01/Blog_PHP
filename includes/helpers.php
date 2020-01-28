@@ -70,6 +70,18 @@
         return array();
     }
     
+    function GetAllEntrys($db){
+        $sql = "SELECT e.*, c.nombre
+                FROM Entrada e
+                INNER JOIN Categoria c ON c.id = e.categoria_id
+                ORDER BY e.fecha DESC";
+        $entrys = mysqli_query($db, $sql);
+        if($entrys && mysqli_num_rows($entrys) > 0){
+            return $entrys;
+        }
+        return array();
+    }
+    
     function GetUser($db, $id){
         $sql = "SELECT nombre, apellidos, email, password
                 FROM Usuario
@@ -77,6 +89,31 @@
         $user = mysqli_query($db, $sql);
         if($user && mysqli_num_rows($user) > 0){
             return $user;
+        }
+        return array();
+    }
+    
+    function GetEntrysForCategory($db, $category){
+        $sql = "SELECT e.*, c.nombre
+                FROM Entrada e
+                INNER JOIN Categoria c ON c.id = e.categoria_id
+                WHERE e.categoria_id = $category 
+                ORDER BY e.fecha DESC";
+        $entrys = mysqli_query($db, $sql);
+        if($entrys && mysqli_num_rows($entrys) > 0){
+            return $entrys;
+        }
+        return array();
+    }
+    
+    function GetEntryByid($db, $id){
+        $sql = "SELECT e.*, c.nombre
+                FROM Entrada e
+                INNER JOIN Categoria c ON c.id = e.categoria_id
+                WHERE e.id = $id;";
+        $entrys = mysqli_query($db, $sql);
+        if($entrys && mysqli_num_rows($entrys) > 0){
+            return $entrys;
         }
         return array();
     }

@@ -4,7 +4,7 @@
 		    <div id="main">
 		    	<h1>Últimas entradas</h1>
 		    	<?php 
-		    	     $entrys = GetEntrys($db);
+		    	     $entrys = GetAllEntrys($db);
 		    	     while($entry = mysqli_fetch_assoc($entrys)):
 		        ?>
 		        <article class="entry">
@@ -15,9 +15,6 @@
 		    		</a>
 		    	</article>
 		        <?php endwhile; ?>
-		    	<div id="seeall">
-		    		<a href="entrys.php">Ver todas las entradas</a>
-		    	</div>
 		    </div>
 		
 		<?php require_once 'includes/footer.php'; ?>
