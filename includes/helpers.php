@@ -107,9 +107,10 @@
     }
     
     function GetEntryByid($db, $id){
-        $sql = "SELECT e.*, c.nombre
+        $sql = "SELECT e.*, c.nombre, CONCAT(usr.nombre, ' ', usr.apellidos) AS 'autor'
                 FROM Entrada e
                 INNER JOIN Categoria c ON c.id = e.categoria_id
+                INNER JOIN Usuario usr ON usr.id = e.usuario_id
                 WHERE e.id = $id;";
         $entrys = mysqli_query($db, $sql);
         if($entrys && mysqli_num_rows($entrys) > 0){
