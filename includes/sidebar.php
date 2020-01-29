@@ -1,5 +1,12 @@
 <!-- SIDEBAR -->
 		 	<aside id="sidebar">
+		 		<div id="seeker" class="block-aside">
+		 			<h3>Buscar</h3>
+		 			<form action="search.php" method="post">
+		 				<input type="text" name="coincidence" required>
+		 				<input type="submit" value="Buscar">
+		 			</form>
+		 		</div>
 		 		<div id="login" class="block-aside">
 		 			<?php if(isset($_SESSION['errorQuery'])): ?>
 		 				<div class="error-alert">

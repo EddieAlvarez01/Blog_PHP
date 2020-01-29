@@ -118,5 +118,19 @@
         }
         return array();
     }
+    
+    function GetEntrysCoincidence($db, $coincidence){
+        $coincidence = strtolower(mysqli_real_escape_string($db, trim($coincidence)));
+        $sql = "SELECT e.*, c.nombre, CONCAT(usr.nombre, ' ', usr.apellidos) AS 'autor'
+                FROM Entrada e
+                INNER JOIN Categoria c ON c.id = e.categoria_id
+                INNER JOIN Usuario usr ON usr.id = e.usuario_id
+                WHERE LOWER(e.titulo) LIKE '%$coincidence%';";
+        $entrys = mysqli_query($db, $sql);
+        if($entrys && mysqli_num_rows($entrys) > 0){
+            return $entrys;
+        }
+        return array();
+    }
 
 ?>
